@@ -1,0 +1,48 @@
+﻿@model MyMerchTrack2.Models.Merch
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Merch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MerchDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MerchDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MerchPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MerchPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MerchType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MerchType.Title)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
