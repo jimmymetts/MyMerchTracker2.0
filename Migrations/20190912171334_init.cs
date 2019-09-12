@@ -176,10 +176,9 @@ namespace MyMerchTrack2.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     MerchDescription = table.Column<string>(maxLength: 55, nullable: false),
                     MerchPrice = table.Column<double>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
+                    ApplicationUserId = table.Column<string>(nullable: false),
                     ImagePath = table.Column<string>(nullable: true),
-                    MerchTypeId = table.Column<int>(nullable: false),
-                    ApplicationUserId = table.Column<string>(nullable: true)
+                    MerchTypeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -189,7 +188,7 @@ namespace MyMerchTrack2.Migrations
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Merch_MerchType_MerchTypeId",
                         column: x => x.MerchTypeId,

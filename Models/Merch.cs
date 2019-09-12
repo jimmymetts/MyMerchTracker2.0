@@ -19,8 +19,10 @@ namespace MyMerchTrack2.Models
         public double MerchPrice { get; set; }
 
         [Required]
-        public int UserId { get; set; }
-      
+        public string ApplicationUserId { get; set; }
+
+        public ApplicationUser user { get; set; }
+
         public string ImagePath { get; set; }
 
         [Required]
