@@ -10,7 +10,7 @@ using MyMerchTrack2.Data;
 namespace MyMerchTrack2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190911164103_init")]
+    [Migration("20190912171334_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -198,7 +198,8 @@ namespace MyMerchTrack2.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ApplicationUserId");
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired();
 
                     b.Property<string>("ImagePath");
 
@@ -209,8 +210,6 @@ namespace MyMerchTrack2.Migrations
                     b.Property<double>("MerchPrice");
 
                     b.Property<int>("MerchTypeId");
-
-                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -302,9 +301,10 @@ namespace MyMerchTrack2.Migrations
 
             modelBuilder.Entity("MyMerchTrack2.Models.Merch", b =>
                 {
-                    b.HasOne("MyMerchTrack2.Models.ApplicationUser")
+                    b.HasOne("MyMerchTrack2.Models.ApplicationUser", "user")
                         .WithMany("Merchs")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("MyMerchTrack2.Models.MerchType", "MerchType")
                         .WithMany("Merchs")
