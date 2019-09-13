@@ -13,7 +13,7 @@ using MyMerchTrack2.Models;
 
 namespace MyMerchTrack2.Controllers
 
-   
+
 {
     [Authorize]
     public class MerchesController : Controller
@@ -28,22 +28,27 @@ namespace MyMerchTrack2.Controllers
             _context = context;
         }
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
-       
+
         // GET: Merches
-        public async Task<IActionResult> Index(int? merchType)     
+        public async Task<IActionResult> Index(int? merchType)
         {
             var user = await GetCurrentUserAsync();
             var merch = _context.Merch
              .Where(m => m.ApplicationUserId == user.Id)
+             //.Include(m => m.ApplicationUserId)
              .Include(m => m.MerchType);
 
             if (merchType != null)
             {
-                var myMerch = merch.Where(m => )
+                var merchCategory = merch.Where(m => m.MerchTypeId == merchType);
+                return View(await merchCategory.ToListAsync());
             }
+            else
+            { 
 
             return View(await merch.ToListAsync());
-        }
+    }
+}
 
         /*Include(m => m.MerchType);*/
 
@@ -65,6 +70,8 @@ namespace MyMerchTrack2.Controllers
             }
 
             return View(merch);
+
+           
         }
 
         // GET: Merches/Create
@@ -101,6 +108,7 @@ namespace MyMerchTrack2.Controllers
         // GET: Merches/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -122,6 +130,7 @@ namespace MyMerchTrack2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,MerchDescription,MerchPrice,ApplicationUserId,ImagePath,MerchTypeId")] Merch merch)
         {
+            
             if (id != merch.Id)
             {
                 return NotFound();
@@ -148,8 +157,10 @@ namespace MyMerchTrack2.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["MerchTypeId"] = new SelectList(_context.Set<MerchType>(), "Id", "Title", merch.MerchTypeId);
-            
+
             return View(merch);
+
+
         }
 
         // GET: Merches/Delete/5
