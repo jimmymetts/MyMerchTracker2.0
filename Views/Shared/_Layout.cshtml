@@ -11,6 +11,7 @@
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              @*<link href="https://fonts.googleapis.com/css?family=Ultra&display=swap" rel="stylesheet">*@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
@@ -32,8 +33,9 @@
                 <ul class="nav navbar-nav">
 
                     <li><a asp-area="" asp-controller="Merches" asp-action="Index">MyMerch</a></li>
-                    <li><a asp-area="" asp-controller="Merches" asp-action="Index">MyShirts</a></li>
-                    <li><a asp-area="" asp-controller="Merches" asp-action="Index">MyCaps</a></li>
+                    <li><a href="https://localhost:5001/Merches?merchType=2">MyShirts</a></li>
+                    <li><a href="https://localhost:5001/Merches?merchType=1">MyCaps</a></li>
+                    <li><a href="https://localhost:5001/Merches?merchType=3">MyAccessories</a></li>
                     @*<li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
                 </ul>
                 <partial name="_LoginPartial" />

@@ -10,7 +10,7 @@ using MyMerchTrack2.Data;
 namespace MyMerchTrack2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190912171334_init")]
+    [Migration("20190914143913_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -301,7 +301,7 @@ namespace MyMerchTrack2.Migrations
 
             modelBuilder.Entity("MyMerchTrack2.Models.Merch", b =>
                 {
-                    b.HasOne("MyMerchTrack2.Models.ApplicationUser", "user")
+                    b.HasOne("MyMerchTrack2.Models.ApplicationUser", "User")
                         .WithMany("Merchs")
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade);
