@@ -90,6 +90,8 @@ namespace MyMerchTrack2.Controllers
         {
             //line to attach user's Id to merches userid
 
+            // few line of code here to convert viewmodel to data model
+
             var user = await GetCurrentUserAsync();
             merch.ApplicationUserId = user.Id;
 

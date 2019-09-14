@@ -27,30 +27,29 @@ namespace MyMerchTrack2.Models.ViewModels
         public ApplicationUser User { get; set; }
 
         [Display(Name = "Small")]
-        public string Small { get; set; }
+        public int Small { get; set; }
 
         [Display(Name = "Medium")]
-        public string Medium { get; set; }
+        public int Medium { get; set; }
 
         [Display(Name = "Large")]
-        public string Large { get; set; }
+        public int Large { get; set; }
 
         [Display(Name = "XLarge")]
-        public string Xlarge { get; set; }
+        public int Xlarge { get; set; }
 
         [Display(Name = "XXLarge")]
-        public string Xxlarge { get; set; }
+        public int Xxlarge { get; set; }
+
+        [Display(Name = "All Size")]
+        public string AllSize { get; set; }
+
+        public int MerchTypeId { get; set; }
 
 
 
-        //public string ImagePath { get; set; }
 
-        //[Required]
-        //[Display(Name = "Merch Type")]
-        //public int MerchTypeId { get; set; }
 
-        //public MerchType MerchType { get; set; }
 
-        //public ICollection<MerchSize> MerchSizes { get; set; }
     }
 }
