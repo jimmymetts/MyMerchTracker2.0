@@ -4,56 +4,106 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>MyShirts</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MerchDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MerchPrice)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>*@
-            @*<th>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.MerchType)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MerchDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MerchPrice)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>*@
-            @*<td>
-                @Html.DisplayFor(modelItem => item.ImagePath)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.MerchType.Title)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="cardHolder">
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="cardStyles">
+            <div class="card" style="width: 11rem; height:15rem;">
+                <div class="alignItems">
+                    <h5 class="card-title cardText"> @Html.DisplayFor(modelItem => item.MerchDescription)</h5>
+                    <img class="card-img-top rescaleImage">
+
+                    <div class="card-body">
+                        <a class="btn btn-dark cardButton" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@model IEnumerable<MyMerchTrack2.Models.Merch>
+
+    @{
+        ViewData["Title"] = "Index";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MerchDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MerchPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImagePath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MerchType)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MerchDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MerchPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImagePath)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MerchType.Title)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@

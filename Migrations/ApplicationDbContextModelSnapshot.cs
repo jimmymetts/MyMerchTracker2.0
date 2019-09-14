@@ -299,7 +299,7 @@ namespace MyMerchTrack2.Migrations
 
             modelBuilder.Entity("MyMerchTrack2.Models.Merch", b =>
                 {
-                    b.HasOne("MyMerchTrack2.Models.ApplicationUser", "user")
+                    b.HasOne("MyMerchTrack2.Models.ApplicationUser", "User")
                         .WithMany("Merchs")
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade);
